@@ -10,13 +10,41 @@
 
 }
 
-@media screen  and (max-width : 400px) {
-    
+
+.icons {
+    position: relative !important;
+    height: 7vh !important;
+    width: auto !important;
+    cursor: pointer;
+
+}
+
+.flexs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* **** ---- **** */
+/* Google Search Page  */
+
+.serachImage{
+    all : unset !important ;
+    width : auto;
+    height: 7vh !important;
+}
+
+
+@media screen and (max-width : 400px) {
+
     .google {
         all: unset;
         position: relative !important;
         width: auto !important;
         height: 20vh !important;
-    
+
     }
 }

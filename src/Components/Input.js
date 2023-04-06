@@ -9,7 +9,7 @@ export default function Input() {
     const SubmitForm = (e) => {
         e.preventDefault();
         console.log(input)
-        router.push(`search/web?search=${input}`)
+        router.push(`/search?key=${input}`)
     }
 
     return (
