@@ -19,8 +19,8 @@ export default function Body() {
                 <Input />
             </div>
             <div className='flex  items-center justify-around max-w-[60%] lg:max-w-[30%] mx-auto mt-9'>
-                <Image src={Facebook} width={50} height={30} alt='fb' className='bg-slate-200 p-2 border border-transparent shadow-md hover:shadow-md rounded-full ' />
-                <Image src={WhatsApp} width={50} height={50} alt='fb' className='bg-slate-200  p-2 border border-transparent hover:shadow-md rounded-full ' />
+                <Link href={'https://www.facebook.com/'}><Image src={Facebook} width={50} height={30} alt='fb' className='bg-slate-200 p-2 border border-transparent shadow-md hover:shadow-md rounded-full ' /></Link>
+                <Link href={'https://web.whatsapp.com/'}><Image src={WhatsApp} width={50} height={50} alt='fb' className='bg-slate-200  p-2 border border-transparent hover:shadow-md rounded-full ' /></Link>
                 <Link href={'https://youtube.com/'} ><Image src={youtube} width={50} height={45} alt='fb' className='bg-slate-200 p-2 border border-transparent hover:shadow-md rounded-full ' /></Link>
                 <IoMdAdd className='text-5xl bg-slate-200 p-2 lg:p-3 border border-transparent hover:shadow-md rounded-full '/>
             </div>

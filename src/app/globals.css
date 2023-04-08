@@ -35,6 +35,7 @@
     all : unset !important ;
     width : auto;
     height: 7vh !important;
+    cursor: pointer;
 }
 
 

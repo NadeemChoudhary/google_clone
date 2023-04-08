@@ -12,7 +12,7 @@ export default function SearchResult({ data }) {
                 </div>
                 <div>
                     {
-                        Dummy?.map((val) => (
+                        data?.items?.map((val) => (
                             // <div></div>
 
                             <>

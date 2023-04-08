@@ -16,8 +16,10 @@ import Avtar from '../Avtar'
 import SearchOption from './SearchOption'
 import axios from 'axios'
 import SearchResult from './SearchResult'
+import Modal from '../Modal'
 
 export default function SearchHeader({ param }) {
+  const [Toggle, setToggle] = useState(true)
   const [Data, setData] = useState(null);
   const FetchData = async () => {
     await axios.get(`https://www.googleapis.com/customsearch/v1?key=AIzaSyAJ_TRxLePr0fo7IPd1mTWyUggQZ-AQ5qk&cx=561f6a3ff44b4403e&q=${param.key}&start=1`).then(({ data }) => {
@@ -36,9 +38,9 @@ export default function SearchHeader({ param }) {
   }
   console.log(router);
   console.log(Data)
-  useEffect(() => {
-    FetchData();
-  }, [param])
+  // useEffect(() => {
+  //   FetchData();
+  // }, [param])
 
 
   return (
@@ -46,7 +48,7 @@ export default function SearchHeader({ param }) {
       <header className='p-6 flex items-center justify-between'>
         <div className=' flex items-center justify-between ' style={{ width: '60%' }}>
           <Image
-            className='serachImage'
+            className=' cursor-pointer serachImage'
             src={google}
             alt='google'
             layout='fill'
@@ -65,7 +67,7 @@ export default function SearchHeader({ param }) {
         </div>
         <div className='flex items-center space-x-2 cursor-pointer'>
           <AiOutlineSetting className='text-lg' />
-          <CgMenuGridO className='text-5xl bg-transparent hover:bg-slate-200 rounded-full p-3 ' />
+          <CgMenuGridO className='text-5xl bg-transparent hover:bg-slate-200 rounded-full p-3 ' onClick={()=> setToggle(!Toggle)}/>
           <Avtar url={profile} />
         </div>
       </header>
@@ -85,6 +87,7 @@ export default function SearchHeader({ param }) {
 
         </div>
       </div>
+        {Toggle && <Modal className='pl-[70%]'/>} 
       <div className=' '>
         <SearchResult data={Data} />
       </div>
