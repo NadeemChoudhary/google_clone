@@ -19,7 +19,7 @@ import SearchResult from './SearchResult'
 import Modal from '../Modal'
 
 export default function SearchHeader({ param }) {
-  const [Toggle, setToggle] = useState(true)
+  const [Toggle, setToggle] = useState(false)
   const [Data, setData] = useState(null);
   const FetchData = async () => {
     await axios.get(`https://www.googleapis.com/customsearch/v1?key=AIzaSyAJ_TRxLePr0fo7IPd1mTWyUggQZ-AQ5qk&cx=561f6a3ff44b4403e&q=${param.key}&start=1`).then(({ data }) => {
@@ -38,9 +38,9 @@ export default function SearchHeader({ param }) {
   }
   console.log(router);
   console.log(Data)
-  // useEffect(() => {
-  //   FetchData();
-  // }, [param])
+  useEffect(() => {
+    FetchData();
+  }, [param])
 
 
   return (
