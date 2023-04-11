@@ -41,9 +41,7 @@ export default function SearchHeader({ param : {key} }) {
   }
 
   useEffect(() => {
-   setTimeout(() => {
-    FetchData();
-   }, 1000);
+    if(key !== undefined) FetchData();
   }, [key])
 
 
