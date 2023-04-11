@@ -18,7 +18,7 @@ import axios from 'axios'
 import SearchResult from './SearchResult'
 import Modal from '../Modal'
 
-export default function SearchHeader({ param }) {
+export default function SearchHeader({ param : {key} }) {
   const [Toggle, setToggle] = useState(false)
   const [Data, setData] = useState(null);
 
@@ -32,16 +32,19 @@ export default function SearchHeader({ param }) {
     router.push(`/search?key=${SearchRef}`)
   }
   console.log(router);
-  console.log(Data, "check")
+  console.log(key, "check")
   const FetchData = async () => {
-    const {data} = await axios.get(`https://www.googleapis.com/customsearch/v1?key=AIzaSyAJ_TRxLePr0fo7IPd1mTWyUggQZ-AQ5qk&cx=561f6a3ff44b4403e&q=${param.key}&start=1`);
+    const {data} = await axios.get(`https://www.googleapis.com/customsearch/v1?key=AIzaSyAJ_TRxLePr0fo7IPd1mTWyUggQZ-AQ5qk&cx=561f6a3ff44b4403e&q=${key}&start=1`);
   console.log(data?.items , 'oooo');
     if (data?.items) setData(data)
 
   }
+
   useEffect(() => {
+   setTimeout(() => {
     FetchData();
-  }, [param])
+   }, 1000);
+  }, [key])
 
 
   return (
