@@ -7,7 +7,7 @@ import { BsArrowRightShort, BsFillMicFill, BsCameraVideo } from 'react-icons/bs'
 import { AiOutlineSetting, } from 'react-icons/ai'
 import { RiToolsFill } from 'react-icons/ri'
 import { HiOutlineMap } from 'react-icons/hi'
-import { CgMenuGridO } from 'react-icons/cg'
+import { CgLaptop, CgMenuGridO } from 'react-icons/cg'
 import { RxCross2 } from 'react-icons/rx'
 import { FiMoreVertical } from 'react-icons/fi'
 import { useRouter } from 'next/navigation'
@@ -21,12 +21,7 @@ import Modal from '../Modal'
 export default function SearchHeader({ param }) {
   const [Toggle, setToggle] = useState(false)
   const [Data, setData] = useState(null);
-  const FetchData = async () => {
-    await axios.get(`https://www.googleapis.com/customsearch/v1?key=AIzaSyAJ_TRxLePr0fo7IPd1mTWyUggQZ-AQ5qk&cx=561f6a3ff44b4403e&q=${param.key}&start=1`).then(({ data }) => {
-      setData(data)
-    }
-    );
-  }
+
   const Ref = useRef(null);
   const router = useRouter();
   const HandleSearch = (e) => {
@@ -37,7 +32,13 @@ export default function SearchHeader({ param }) {
     router.push(`/search?key=${SearchRef}`)
   }
   console.log(router);
-  console.log(Data)
+  console.log(Data, "check")
+  const FetchData = async () => {
+    const {data} = await axios.get(`https://www.googleapis.com/customsearch/v1?key=AIzaSyAJ_TRxLePr0fo7IPd1mTWyUggQZ-AQ5qk&cx=561f6a3ff44b4403e&q=${param.key}&start=1`);
+  console.log(data?.items , 'oooo');
+    if (data?.items) setData(data)
+
+  }
   useEffect(() => {
     FetchData();
   }, [param])
@@ -67,7 +68,7 @@ export default function SearchHeader({ param }) {
         </div>
         <div className='flex items-center space-x-2 cursor-pointer'>
           <AiOutlineSetting className='text-lg' />
-          <CgMenuGridO className='text-5xl bg-transparent hover:bg-slate-200 rounded-full p-3 ' onClick={()=> setToggle(!Toggle)}/>
+          <CgMenuGridO className='text-5xl bg-transparent hover:bg-slate-200 rounded-full p-3 ' onClick={() => setToggle(!Toggle)} />
           <Avtar url={profile} />
         </div>
       </header>
@@ -87,10 +88,10 @@ export default function SearchHeader({ param }) {
 
         </div>
       </div>
-        {Toggle && <Modal className='pl-[70%]'/>} 
+      {Toggle && <Modal className='pl-[70%]' />}
       <div className=' '>
         <SearchResult data={Data} />
       </div>
     </>
-  ) 
+  )
 }

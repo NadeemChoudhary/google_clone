@@ -8,7 +8,7 @@ export default function SearchResult({ data }) {
         <>
             <div className='pl-[17%]'>
                 <div className=' text-[12px] mt-2 mb-2 text-gray-500'>
-                    <p>About {data?.searchInformation?.formattedTotalResults} result {(data?.searchInformation?.formattedSearchTime)} seconds </p>
+                    <span>About {data?.searchInformation?.formattedTotalResults} result {(data?.searchInformation?.formattedSearchTime)} seconds </span>
                 </div>
                 <div>
                     {
