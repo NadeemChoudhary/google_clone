@@ -3,7 +3,7 @@ import Dummy from './data.json'
 import { useRouter } from 'next/navigation'
 export default function SearchResult({ data }) {
     const router = useRouter();
-    console.log(Dummy)
+    console.log(data , 'final data')
     return (
         <>
             <div className='pl-[17%]'>
